@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'login.dart';
 
 void main() {
   runApp(const MyApp());
@@ -7,87 +8,86 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-       
-        colorScheme: .fromSeed(seedColor: Colors.deepPurple),
-      ),
-      home: const MyHomePage(title: 'Raion Internship'),
-    );
+    return const MaterialApp(debugShowCheckedModeBanner: false, home: Login());
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+// void main() {
+//   runApp(const MyApp());
+// }
 
-  final String title;
+// class MyApp extends StatelessWidget {
+//   const MyApp({super.key});
 
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       title: 'Flutter Demo',
+//       theme: ThemeData(colorScheme: .fromSeed(seedColor: Colors.deepPurple)),
+//       home: const MyHomePage(title: 'Raion Internship'),
+//     );
+//   }
+// }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+// class MyHomePage extends StatefulWidget {
+//   const MyHomePage({super.key, required this.title});
 
-  void _incrementCounter() {
-    setState(() {
-     
-      _counter++;
-    });
-  }
+//   final String title;
 
-  @override
-  Widget build(BuildContext context) {
-   
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.blue,
+//   @override
+//   State<MyHomePage> createState() => _MyHomePageState();
+// }
 
-        title: Text(widget.title),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
+// class _MyHomePageState extends State<MyHomePage> {
+//   int _counter = 0;
 
-        child: Column(
-         children: [
-            TextField(
-              decoration: InputDecoration(
-                label: Text('Email'),
-                border: OutlineInputBorder()
-              ),
-            ),
+//   void _incrementCounter() {
+//     setState(() {
+//       _counter++;
+//     });
+//   }
 
-          Text('Login Page', ),
-          TextField(
-            decoration: InputDecoration(
-                label: Text('Password'),
-                border: OutlineInputBorder()
-              ),
-          ),
-          TextField(
-            decoration: InputDecoration(
-                label: Text('Name'),
-                border: OutlineInputBorder()
-              ),
-          ),
-            ElevatedButton(onPressed: (){}, child: Text('Login')),
-         ]
-        ),
-        
-      ),
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(backgroundColor: Colors.blue, title: Text(widget.title)),
+//       body: Padding(
+//         padding: const EdgeInsets.all(20.0),
 
-      
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
-    );
-  }
+//         child: Column(
+//           children: [
+//             TextField(
+//               decoration: InputDecoration(
+//                 label: Text('Email'),
+//                 border: OutlineInputBorder(),
+//               ),
+//             ),
 
+//             Text('Login Page'),
+//             TextField(
+//               decoration: InputDecoration(
+//                 label: Text('Password'),
+//                 border: OutlineInputBorder(),
+//               ),
+//             ),
+//             TextField(
+//               decoration: InputDecoration(
+//                 label: Text('Name'),
+//                 border: OutlineInputBorder(),
+//               ),
+//             ),
+//             ElevatedButton(onPressed: () {}, child: Text('Login')),
+//           ],
+//         ),
+//       ),
 
-}
+//       floatingActionButton: FloatingActionButton(
+//         onPressed: _incrementCounter,
+//         tooltip: 'Increment',
+//         child: const Icon(Icons.add),
+//       ),
+//     );
+//   }
+// }
