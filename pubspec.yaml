@@ -67,6 +67,7 @@ flutter:
     #- assets/image_20.png
     #- assets/framebar1.png
     - assets/
+    - assets/splashscreen/
 
   fonts:
     - family: NunitoSans
