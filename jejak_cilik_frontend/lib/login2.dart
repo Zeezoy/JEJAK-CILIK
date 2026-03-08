@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'signin.dart';
+import 'onboarding4.dart';
 
 class Login2 extends StatefulWidget {
   const Login2({super.key});
@@ -88,7 +90,14 @@ class _Login2State extends State<Login2> {
                 ),
                 child: IconButton(
                   icon: const Icon(Icons.arrow_back, color: Colors.white),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const Onboarding4(),
+                      ),
+                    );
+                  },
                 ),
               ),
             ),
@@ -117,7 +126,10 @@ class _Login2State extends State<Login2> {
                   const SizedBox(width: 20),
                   InkWell(
                     onTap: () {
-                      debugPrint('Daftar ditekan');
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const Signin()),
+                      );
                     },
                     child: Image.asset('assets/frame_50.png', width: 164),
                   ),

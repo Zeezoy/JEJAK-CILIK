@@ -1,74 +1,109 @@
 import 'package:flutter/material.dart';
+import 'onboarding2.dart';
 
-// void main() {
-//   runApp(
-//     const MaterialApp(home: Onboarding(), debugShowCheckedModeBanner: false),
-//   );
-// }
-
-class Onboarding extends StatelessWidget {
+class Onboarding extends StatefulWidget {
   const Onboarding({super.key});
 
   @override
+  State<Onboarding> createState() => _OnboardState();
+}
+
+class _OnboardState extends State<Onboarding> {
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Center(
-          child: Column(
-            mainAxisAlignment: .center,
-            crossAxisAlignment: .stretch,
-            spacing: 20,
-            children: [
-              Column(
-                children: [
-                  Image.asset('asset/Group 334.png', width: 148, height: 167),
-                  Text(
-                    'Mulai',
-                    textAlign: .center,
-                    style: TextStyle(
-                      fontWeight: .w600,
-                      color: Colors.blue,
-                      fontSize: 32,
-                    ),
-                  ),
-                  Text(
-                    'Mulailah perjalan Malang-mu hari ini \n bersama Malang Venture',
-                    textAlign: .center,
-                    style: TextStyle(fontSize: 16, color: Colors.blue),
-                  ),
-                ],
-              ),
-
-              SizedBox(height: 215),
-
-              Column(
-                crossAxisAlignment: .stretch,
-                spacing: 16,
-                children: [
-                  ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.blue,
-                    ),
-                    child: Text(
-                      'Daftar',
-                      style: TextStyle(color: Colors.white, fontWeight: .w600),
-                    ),
-                  ),
-
-                  ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.lightBlue.withValues(alpha: 0.4),
-                    ),
-                    child: Text('Masuk', style: TextStyle(color: Colors.white)),
-                  ),
-                ],
-              ),
-            ],
+      backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+      body: Stack(
+        children: [
+          Positioned(
+            top: -50,
+            right: -50,
+            child: Image.asset('assets/onboarding/elipsatas.png', width: 312),
           ),
-        ),
+          Positioned(
+            bottom: -50,
+            left: -50,
+            child: Image.asset('assets/onboarding/elipsbawah.png', width: 326),
+          ),
+          Positioned(
+            top: 500,
+            right: -50,
+            child: Image.asset(
+              'assets/onboarding/elipssamping.png',
+              width: 134,
+            ),
+          ),
+          Positioned(
+            top: 200,
+            right: 200,
+            child: Image.asset('assets/onboarding/elipsfull.png', width: 157),
+          ),
+
+          Center(
+            child: Image.asset('assets/onboarding/jejakcilik1.png', width: 265),
+          ),
+
+          Positioned(
+            top: 180,
+            left: 40,
+            right: 40,
+            child: const Text(
+              "Selamat Datang di",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontFamily: 'NunitoSans',
+                fontSize: 36,
+                color: Color(0xFF4C8099),
+                fontWeight: FontWeight.w900,
+              ),
+            ),
+          ),
+
+          Positioned(
+            bottom: 40,
+            left: 20,
+            right: 20,
+            child: SizedBox(
+              height: 55,
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  border: const Border(
+                    top: BorderSide(color: Color(0xFF6F470A), width: 2),
+                    left: BorderSide(color: Color(0xFF6F470A), width: 2),
+                    right: BorderSide(color: Color(0xFF6F470A), width: 2),
+                    bottom: BorderSide(color: Color(0xFF6F470A), width: 4),
+                  ),
+                ),
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.orange,
+                    shadowColor: Colors.transparent,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const Onboarding2(),
+                      ),
+                    );
+                  },
+                  child: const Text(
+                    "Mulai Sekarang",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

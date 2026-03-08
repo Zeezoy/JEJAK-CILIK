@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:jejak_cilik/login2.dart';
+import 'onboarding4.dart';
 
 class Signin extends StatefulWidget {
   const Signin({super.key});
@@ -92,7 +94,14 @@ class _SigninState extends State<Signin> {
                 ),
                 child: IconButton(
                   icon: const Icon(Icons.arrow_back, color: Colors.white),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const Onboarding4(),
+                      ),
+                    );
+                  },
                 ),
               ),
             ),
@@ -114,7 +123,10 @@ class _SigninState extends State<Signin> {
                 children: [
                   InkWell(
                     onTap: () {
-                      debugPrint('Masuk ditekan');
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const Login2()),
+                      );
                     },
                     child: Image.asset('assets/framemasukabu.png', width: 164),
                   ),

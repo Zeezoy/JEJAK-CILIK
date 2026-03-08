@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'onboarding.dart';
 
 class SplashScreen2 extends StatefulWidget {
   const SplashScreen2({super.key});
@@ -45,6 +46,14 @@ class _SplashScreen2State extends State<SplashScreen2>
       setState(() => step = i);
       await Future.delayed(Duration(milliseconds: delays[i]));
     }
+    await Future.delayed(const Duration(seconds: 5));
+
+    if (!mounted) return;
+
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => const Onboarding()),
+    );
   }
 
   // Future<void> _playSequence() async {
