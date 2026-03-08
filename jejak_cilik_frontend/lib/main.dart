@@ -1,8 +1,17 @@
 import 'package:flutter/material.dart';
-import 'splashscreen2.dart';
+import 'features/profile/pages/edit_profile_page.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
-void main() {
+void main() async {
   runApp(const MyApp());
+   WidgetsFlutterBinding.ensureInitialized();
+
+   await Supabase.initialize(
+    url: 'https://iytavcacxclvgvkbdxle.supabase.co',
+    anonKey: 'sb_publishable_Btp9diyEEfAMicnJt7gf3g_gckPnlYR',
+   );
+
+   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -12,7 +21,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SplashScreen2(),
+      home: EditProfilePage(),
     );
   }
 }
