@@ -69,11 +69,13 @@ flutter:
     #- assets/framebar1.png
     - assets/
     - assets/splashscreen/
+    - assets/onboarding/
+    - assets/modul/
 
   fonts:
     - family: NunitoSans
       fonts:
-        - asset: assets/fonts/NunitoSans-VariableFont_YTLC,opsz,wdth,wght.ttf
+        - asset: assets/fonts/NunitoSans.ttf
     
   #   - images/a_dot_ham.jpeg
 
