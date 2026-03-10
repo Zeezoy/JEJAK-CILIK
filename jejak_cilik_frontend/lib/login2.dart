@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'signin.dart';
 import 'onboarding4.dart';
+import 'submodul.dart';
 
 class Login2 extends StatefulWidget {
   const Login2({super.key});
@@ -11,6 +12,7 @@ class Login2 extends StatefulWidget {
 
 class _Login2State extends State<Login2> {
   bool _obscure = true;
+  bool _loginError = false;
 
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
@@ -156,24 +158,30 @@ class _Login2State extends State<Login2> {
                       /// EMAIL
                       TextField(
                         controller: _emailController,
-                        style: const TextStyle(
-                          color: Color.fromARGB(255, 189, 189, 189),
+                        style: TextStyle(
+                          color: _loginError
+                              ? Colors.red
+                              : Color.fromARGB(255, 189, 189, 189),
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                         ),
                         decoration: InputDecoration(
                           hintText: "Email",
-                          hintStyle: const TextStyle(
-                            color: Color.fromARGB(255, 189, 189, 189),
+                          hintStyle: TextStyle(
+                            color: _loginError
+                                ? Colors.red
+                                : Color.fromARGB(255, 189, 189, 189),
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                           ),
                           //border: OutlineInputBorder(),
                           prefixIcon: _emailController.text.isEmpty
-                              ? const Icon(
+                              ? Icon(
                                   Icons.email_outlined,
                                   size: 18,
-                                  color: Color.fromARGB(255, 189, 189, 189),
+                                  color: _loginError
+                                      ? Colors.red
+                                      : Color.fromARGB(255, 189, 189, 189),
                                 )
                               : null,
                           filled: true,
@@ -181,7 +189,9 @@ class _Login2State extends State<Login2> {
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20),
                             borderSide: BorderSide(
-                              color: Color.fromARGB(255, 189, 189, 189),
+                              color: _loginError
+                                  ? Colors.red
+                                  : Colors.grey.shade400,
                             ),
                           ),
                         ),
@@ -194,23 +204,36 @@ class _Login2State extends State<Login2> {
                       TextField(
                         controller: _passwordController,
                         obscureText: _obscure,
-                        style: const TextStyle(
-                          color: Color.fromARGB(255, 189, 189, 189),
+                        style: TextStyle(
+                          color: _loginError
+                              ? Colors.red
+                              : Color.fromARGB(255, 189, 189, 189),
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                         ),
                         decoration: InputDecoration(
                           hintText: "Kata Sandi",
-                          hintStyle: const TextStyle(
-                            color: Color.fromARGB(255, 189, 189, 189),
+                          errorText: _loginError
+                              ? "Email atau kata sandi salah"
+                              : null,
+                          errorStyle: const TextStyle(
+                            color: Colors.red,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          hintStyle: TextStyle(
+                            color: _loginError
+                                ? Colors.red
+                                : Color.fromARGB(255, 189, 189, 189),
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                           ),
                           prefixIcon: _passwordController.text.isEmpty
-                              ? const Icon(
+                              ? Icon(
                                   Icons.lock_outline,
                                   size: 18,
-                                  color: Color.fromARGB(255, 189, 189, 189),
+                                  color: _loginError
+                                      ? Colors.red
+                                      : Color.fromARGB(255, 189, 189, 189),
                                 )
                               : null,
 
@@ -218,14 +241,20 @@ class _Login2State extends State<Login2> {
                           fillColor: Color(0xFFF6FBFA),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20),
-                            borderSide: BorderSide(color: Colors.grey.shade400),
+                            borderSide: BorderSide(
+                              color: _loginError
+                                  ? Colors.red
+                                  : Color.fromARGB(255, 189, 189, 189),
+                            ),
                           ),
                           suffixIcon: IconButton(
                             icon: Icon(
                               _obscure
                                   ? Icons.visibility_off
                                   : Icons.visibility,
-                              color: Colors.grey.shade400,
+                              color: _loginError
+                                  ? Colors.red
+                                  : Color.fromARGB(255, 189, 189, 189),
                             ),
                             onPressed: () {
                               setState(() {
@@ -289,7 +318,14 @@ class _Login2State extends State<Login2> {
                                 borderRadius: BorderRadius.circular(20),
                               ),
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const SubModul(),
+                                ),
+                              );
+                            },
                             child: const Text(
                               "Masuk",
                               style: TextStyle(

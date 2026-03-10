@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'signin6.dart';
 
 class Signin5 extends StatefulWidget {
   const Signin5({super.key});
@@ -122,7 +123,14 @@ class _Signin5State extends State<Signin5> {
                         borderRadius: BorderRadius.circular(20),
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const Signin6(),
+                        ),
+                      );
+                    },
                     child: const Text(
                       "Selanjutnya",
                       style: TextStyle(

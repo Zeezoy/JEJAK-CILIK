@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'signin4.dart';
 
 class Signin3 extends StatefulWidget {
   const Signin3({super.key});
@@ -179,7 +180,14 @@ class _Signin3State extends State<Signin3> {
                         borderRadius: BorderRadius.circular(20),
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const Signin4(),
+                        ),
+                      );
+                    },
                     child: const Text(
                       "Selanjutnya",
                       style: TextStyle(

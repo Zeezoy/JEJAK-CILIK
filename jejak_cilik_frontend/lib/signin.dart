@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jejak_cilik/login2.dart';
 import 'onboarding4.dart';
+import 'signin2.dart';
 
 class Signin extends StatefulWidget {
   const Signin({super.key});
@@ -378,7 +379,14 @@ class _SigninState extends State<Signin> {
                                 borderRadius: BorderRadius.circular(20),
                               ),
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const Signin2(),
+                                ),
+                              );
+                            },
                             child: const Text(
                               "Masuk",
                               style: TextStyle(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'signin3.dart';
 
 class Signin2 extends StatefulWidget {
   const Signin2({super.key});
@@ -43,7 +44,7 @@ class _Signin2State extends State<Signin2> {
                 alignment: Alignment.center,
                 children: [
                   /// ELLIPSE (BACKGROUND)
-                  Image.asset('assets/Ellipse 6.png', width: 346),
+                  Image.asset('assets/Ellipse_6.png', width: 346),
 
                   /// GAMBAR DI TENGAH ELLIPSE
                   Image.asset('assets/penguin3.png', width: 293),
@@ -120,7 +121,14 @@ class _Signin2State extends State<Signin2> {
                         borderRadius: BorderRadius.circular(20),
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const Signin3(),
+                        ),
+                      );
+                    },
                     child: const Text(
                       "Mulai",
                       style: TextStyle(

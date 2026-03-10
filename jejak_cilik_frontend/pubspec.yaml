@@ -70,11 +70,17 @@ flutter:
     - assets/splashscreen/
     - assets/onboarding/
     - assets/modul/
+    - assets/album/
+    - assets/belajar/
 
   fonts:
     - family: NunitoSans
       fonts:
         - asset: assets/fonts/NunitoSans.ttf
+        
+    - family: MochiBoom
+      fonts:
+        - asset: assets/fonts/mochi-boom-demo.regular.ttf
     
   #   - images/a_dot_ham.jpeg
 
