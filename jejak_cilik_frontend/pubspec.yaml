@@ -73,6 +73,7 @@ flutter:
     - assets/modul/
     - assets/album/
     - assets/belajar/
+    - assets/misi/
 
   fonts:
     - family: NunitoSans

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'splashscreen2.dart';
+import 'package:jejak_cilik/recall.dart';
+// import 'splashscreen2.dart';
 
 // void main() {
 //   runApp(const MyApp());
@@ -17,7 +18,7 @@ import 'splashscreen2.dart';
 //   }
 // }
 
-import 'belajar.dart';
+import 'finalrecall.dart';
 
 void main() {
   runApp(const MyApp());
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false, home: Belajar());
+    return MaterialApp(debugShowCheckedModeBanner: false, home: FinalRecall());
   }
 }
 

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:jejak_cilik/submodul.dart';
+import 'submodul.dart';
 
 class Signin6 extends StatefulWidget {
   const Signin6({super.key});
@@ -122,7 +124,14 @@ class _Signin6State extends State<Signin6> {
                         borderRadius: BorderRadius.circular(20),
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const SubModul(),
+                        ),
+                      );
+                    },
                     child: const Text(
                       "Selanjutnya",
                       style: TextStyle(
