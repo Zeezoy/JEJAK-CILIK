@@ -15,7 +15,7 @@ class GoogleLoginPage extends ConsumerWidget{
         clientId: null,
       );
 
-      final GoogleSignInAccount? account = 
+      final GoogleSignInAccount account = 
         await googleSignIn.authenticate();
       
       if (account == null) return;

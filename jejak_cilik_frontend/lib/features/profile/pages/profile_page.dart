@@ -1,20 +1,32 @@
 import 'package:flutter/material.dart';
-import '../widgets/modal_enter_password.dart';
-import '../widgets/modal_logout.dart';
-import 'pages/edit_profile_page.dart';
+import 'edit_profile_page.dart';
+import 'change_password_page.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../provider/profile_provider.dart';
+import 'certificate_page.dart';
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends ConsumerWidget {
   const ProfilePage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
 
-    String name = "Abe";
-    String birthDate = "28 Feb 2016";
-    String email = "Abe@gmail.com";
+      SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        statusBarIconBrightness: Brightness.dark,
+      ),
+    );
+
+    final profile = ref.watch(profileProvider);
+
+    String name = profile?["name"] ?? "";
+    String birthDate = profile?["birth_date"] ?? "";
+    String email = profile?["email"] ?? "";
     
     return Scaffold(
-      backgroundColor: const Color(0xFFEAF3F7),
+      backgroundColor: const Color(0xFFF8FEFE),
 
       body: SafeArea(
         child: Column(
@@ -33,100 +45,69 @@ class ProfilePage extends StatelessWidget {
             ),
 
             const SizedBox(height: 10),
-            Stack(
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Stack(
               alignment: Alignment.center,
               children: [
                 
                 Container(
-                  height: 170,
-                  margin: const EdgeInsets.symmetric(horizontal: 20),
+                  width: 328,
+                  height: 218,
                   decoration: BoxDecoration(
-                    color: const Color(0xFFDDEAF1),
-                    borderRadius: BorderRadius.circular(120),
+                    color: const Color(0xFFECF9FF),
+                    borderRadius: BorderRadius.circular(150),
                   ),
                 ),
 
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 30),
+                Positioned(
+                  right: 40,
+                  child: Image.asset(
+                    "assets/editProfile.png",
+                    height: 120,
+                  ),
+                ),
 
-                  child: Row(
+                Positioned(
+                  left: 40,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      Text(
+                        name,
+                        style: const TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.w800,
+                          color: Color(0xFF4C8099),
+                        ),
+                      ),
 
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
+                      const SizedBox(height: 6),
 
-                          Text(
-                            name,
-                            style: const TextStyle(
-                              fontFamily:  "NunitoSans",
-                              fontWeight: FontWeight.w700,
-                              fontSize: 20,
-                              color: Color(0xFFDDEAF1),
-                            ),
-                          ),
-
-                          const SizedBox(height: 10),
-
-                          Row(
-                            children: [
-
-                              const Icon(
-                                Icons.cake,
-                                size: 16,
-                                color: Color(0xFF4A90A4),
-                              ),
-
-                              const SizedBox(width: 6),
-
-                              Text(
-                                birthDate,
-                                style: const TextStyle(
-                                  fontSize: 13,
-                                  fontFamily: "NunitoSans",
-                                ),
-                              ),
-                            ],
-                          ),
-
-                          const SizedBox(width: 6),
-
-                          Row(
-                            children: [
-
-                              const Icon(
-                                Icons.email,
-                                size: 16,
-                                color: Color(0xFFFFA726),
-                              ),
-
-                              const SizedBox(width: 6),
-
-                              Text(
-                                email,
-                                style: const TextStyle(
-                                  fontSize: 13,
-                                  fontFamily: "NunitoSans",
-                                ),
-                              ),
-                            ],
-                          ),
+                      Row(
+                         children: [
+                          const Icon(Icons.cake, size:16,color:Color(0xFF4C8099)),
+                          const SizedBox(width:4),
+                          Text(birthDate),
                         ],
                       ),
 
-                      const Spacer(),
+                      const SizedBox(height:4),
 
-                      // PENGUIN IMAGE 
-                      Image.asset(
-                        "assets/editProfile.png",
-                        height: 120,
-                      ),
+                      Row(
+                        children: [
+                          const Icon(Icons.email,size:16,color:Color(0xFFBF7D1D)),
+                          const SizedBox(width:4),
+                          Text(email),
+                        ],
+                      ),  
                     ],
                   ),
                 ),
-              ],
+            ],
             ),
-
+            ),
+            
             const SizedBox(height: 20),
 
             Padding(
@@ -134,22 +115,33 @@ class ProfilePage extends StatelessWidget {
 
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const[
+                children: [
 
-                  Text(
+                  const Text(
                     "Sertifikat",
                     style: TextStyle(
                       fontWeight: FontWeight.w700,
                       fontSize: 16,
-                      color: Color(0xFFFFA726),
+                      color: Color(0xFF5FA1BF),
                     ),
                   ),
 
-                   Text(
+                GestureDetector(
+                onTap: (){
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => const CertificatePage(),
+                    ),
+                  );
+                },
+                
+                   child: const Text(
                     "Lainnya",
                     style: TextStyle(
-                      color: Color(0xFFFFA726),
-                      fontWeight: FontWeight.w600,
+                      color: Color(0xFFBF7D1D),
+                      fontWeight: FontWeight.w600, 
+                      ),
                     ),
                   ),
                 ],
@@ -157,26 +149,55 @@ class ProfilePage extends StatelessWidget {
             ),
 
             const SizedBox(height: 10),
-
             // CERTIFICATE CARD
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              child: CertificateCard(),
+            SizedBox(
+              height: 120,
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                children: const [
+
+                  CertificateCard(),
+                  SizedBox(width: 12),
+
+                  CertificateCard(),
+                  SizedBox(width: 12),
+
+                  CertificateCard(),
+
+                ],
+              ),
             ),
 
             const SizedBox(height: 20),
 
             // MENU
-            const ProfileMenu(
+            ProfileMenu(
               icon: Icons.person_outline,
               title: "Edit Akun",
               subtitle: "Ubah informasi akun Anda",
+              onTap: (){
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const EditProfilePage(),
+                ),
+              );
+            },
             ),
 
-            const ProfileMenu(
+            ProfileMenu(
               icon: Icons.lock_outline,
               title: "Kata Sandi",
               subtitle: "Ubah kata sandi akun Anda",
+              onTap: (){
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const ChangePasswordPage(),
+                ),
+              );
+            },
             ),
 
             const Spacer(),
@@ -186,7 +207,7 @@ class ProfilePage extends StatelessWidget {
               height: 60,
         
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: const Color(0xFFF2FBFF),
                     borderRadius: BorderRadius.circular(40), 
                     boxShadow: const [
                       BoxShadow(
@@ -201,10 +222,10 @@ class ProfilePage extends StatelessWidget {
 
               children: const [
 
-                Icon(Icons.home_outlined),
-                Icon(Icons.menu_book_outlined),
-                Icon(Icons.directions_car_outlined),
-                Icon(Icons.emoji_events_outlined),
+                Icon(Icons.home_outlined, color: Color(0xFF959898)),
+                Icon(Icons.menu_book_outlined, color: Color(0xFF959898)),
+                Icon(Icons.map_outlined, color: Color(0xFF959898)),
+                Icon(Icons.emoji_events_outlined, color: Color(0xFF959898)),
 
                 CircleAvatar(
                   backgroundColor: Color(0xFFFFA726),
@@ -225,11 +246,18 @@ class CertificateCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 100,
-
+      width: 250,
+      height: 120,
       decoration: BoxDecoration(
-        color: const Color(0xFF6DB7D6),
+        color: const Color(0xFF71C1E6),
         borderRadius: BorderRadius.circular(16),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black12,
+            blurRadius: 8,
+            offset: Offset(0,4),
+          )
+        ],
       ),
 
       child: Padding(
@@ -305,12 +333,14 @@ class ProfileMenu extends StatelessWidget {
   final IconData icon;
   final String title;
   final String subtitle;
+  final VoidCallback? onTap;
 
   const ProfileMenu({
     super.key,
     required this.icon,
     required this.title,
     required this.subtitle,
+    this.onTap,
   });
 
   @override
@@ -319,16 +349,18 @@ class ProfileMenu extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 6),
 
       child: ListTile(
-        leading: Icon(icon, color: const Color(0xFF4A90A4)),
+        leading: Icon(icon, color: const Color(0xFF5FA1BF)),
 
         title: Text(title),
 
         subtitle: Text(
           subtitle,
           style: const TextStyle(fontSize: 12),
-        ),
+        ), 
 
         trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+
+        onTap: onTap,
       ),
     );
   }

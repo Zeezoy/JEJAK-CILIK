@@ -18,95 +18,40 @@ import 'package:jejak_cilik/recall.dart';
 //   }
 // }
 
-import 'finalrecall.dart';
+// <<<<<<< HEAD
+// import 'finalrecall.dart';
+// =======
+// // import 'belajar.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+// Future<void> main() async {
+//   WidgetsFlutterBinding.ensureInitialized();
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+//     url: 'https://iytavcacxclvgvkbdxle.supabase.co',
+// <<<<<<< HEAD
+//     return MaterialApp(debugShowCheckedModeBanner: false, home: FinalRecall());
+// =======
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false, home: FinalRecall());
-  }
-}
+//     // return MaterialApp(debugShowCheckedModeBanner: false, home: Belajar());
 
-// void main() {
-//   runApp(const MyApp());
-// }
-
-// class MyApp extends StatelessWidget {
-//   const MyApp({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
 //     return MaterialApp(
-//       title: 'Flutter Demo',
-//       theme: ThemeData(colorScheme: .fromSeed(seedColor: Colors.deepPurple)),
-//       home: const MyHomePage(title: 'Raion Internship'),
-//     );
-//   }
-// }
-
-// class MyHomePage extends StatefulWidget {
-//   const MyHomePage({super.key, required this.title});
-
-//   final String title;
-
-//   @override
-//   State<MyHomePage> createState() => _MyHomePageState();
-// }
-
-// class _MyHomePageState extends State<MyHomePage> {
-//   int _counter = 0;
-
-//   void _incrementCounter() {
-//     setState(() {
-//       _counter++;
-//     });
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(backgroundColor: Colors.blue, title: Text(widget.title)),
-//       body: Padding(
-//         padding: const EdgeInsets.all(20.0),
-
-//         child: Column(
-//           children: [
-//             TextField(
-//               decoration: InputDecoration(
-//                 label: Text('Email'),
-//                 border: OutlineInputBorder(),
-//               ),
-//             ),
-
-//             Text('Login Page'),
-//             TextField(
-//               decoration: InputDecoration(
-//                 label: Text('Password'),
-//                 border: OutlineInputBorder(),
-//               ),
-//             ),
-//             TextField(
-//               decoration: InputDecoration(
-//                 label: Text('Name'),
-//                 border: OutlineInputBorder(),
-//               ),
-//             ),
-//             ElevatedButton(onPressed: () {}, child: Text('Login')),
-//           ],
+//       debugShowCheckedModeBanner: false,
+      
+//        theme: ThemeData(
+//         fontFamily: "NunitoSans",
+//         scaffoldBackgroundColor: const Color(0xFFF8FEFE),
+//         appBarTheme: const AppBarTheme(
+//           backgroundColor: Color(0xFFF8FEFE),
+//           elevation: 0,
+//           iconTheme: IconThemeData(color: Color(0xFF101010)),
 //         ),
 //       ),
 
-//       floatingActionButton: FloatingActionButton(
-//         onPressed: _incrementCounter,
-//         tooltip: 'Increment',
-//         child: const Icon(Icons.add),
-//       ),
+
+//         home: const HomePage(
+//           name: "user",
+//         ),
 //     );
+
+// >>>>>>> cc4e32ecd5c3905176831ea8136603b9ed603344
 //   }
 // }
