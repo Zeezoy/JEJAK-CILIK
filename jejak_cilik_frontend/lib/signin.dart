@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:jejak_cilik/login2.dart';
+import 'login2.dart';
 import 'onboarding4.dart';
 import 'signin2.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+
 
 class Signin extends StatefulWidget {
   const Signin({super.key});
@@ -20,11 +22,29 @@ class _SigninState extends State<Signin> {
 
   @override
   void initState() {
-    super.initState();
-    _emailController.addListener(() => setState(() {}));
-    _passwordController.addListener(() => setState(() {}));
-    _passController.addListener(() => setState(() {}));
-  }
+  super.initState();
+
+  Supabase.instance.client.auth.onAuthStateChange.listen((data) {
+
+    final session = data.session;
+
+    if (session != null) {
+
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const Login2(),
+        ),
+      );
+
+    }
+
+  });
+
+  _emailController.addListener(() => setState(() {}));
+  _passwordController.addListener(() => setState(() {}));
+  _passController.addListener(() => setState(() {}));
+}
 
   @override
   void dispose() {
@@ -433,8 +453,11 @@ class _SigninState extends State<Signin> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           GestureDetector(
-                            onTap: () {
-                              debugPrint("Google diklik");
+                            onTap: () async {
+                             await Supabase.instance.client.auth.signInWithOAuth(
+                                OAuthProvider.google,
+                                redirectTo: 'io.supabase.flutter://login-callback',
+                             );
                             },
                             child: Image.asset(
                               'assets/image_20.png',

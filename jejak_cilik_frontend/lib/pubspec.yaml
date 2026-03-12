@@ -39,6 +39,7 @@ dependencies:
   google_sign_in: ^7.2.0
   flutter_secure_storage: ^10.0.0
   http: ^1.6.0
+  intl: ^0.18.0
 
 dev_dependencies:
   flutter_test:
@@ -68,6 +69,22 @@ flutter:
     - assets/frame_50.png
     - assets/image_37.png
     - assets/editProfile.png
+    - assets/happyProfile.png
+    - assets/lanjutkanModul.png
+    - assets/menghargai.png
+    - assets/peduli.png
+    - assets/api.png
+    - assets/BGHome.png
+    - assets/PenguinHome.png
+    - assets/Rectangle.png
+    - assets/Mod_Meng_Emo.png
+    - assets/Mod_Menghargai.png
+    - assets/Mod_Peduli.png
+    - assets/cont_menghargai.png
+    - assets/BertanggungJawab.png
+    - assets/Kejujuran.png
+    - assets/HBD.png
+    - assets/BuyModul.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

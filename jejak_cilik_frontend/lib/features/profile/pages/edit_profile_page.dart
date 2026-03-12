@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import '../widgets/profile_textfield.dart';
 import '../widgets/calendar_picker.dart';
-import '../widgets/modal_success_profile.dart';
+import '../modals/modal_success_profile.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../provider/profile_provider.dart';
 
-class EditProfilePage extends StatefulWidget {
+class EditProfilePage extends ConsumerStatefulWidget {
   const EditProfilePage({super.key});
 
   @override
-   State<EditProfilePage> createState() => _EditProfilePageState();
+   ConsumerState<EditProfilePage> createState() =>  _EditProfilePageState();
 }
-class _EditProfilePageState extends State<EditProfilePage> {
+class _EditProfilePageState extends ConsumerState <EditProfilePage> {
 
   final nameController = TextEditingController();
   final emailController = TextEditingController();
@@ -19,11 +21,11 @@ class _EditProfilePageState extends State<EditProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF3F6F8),
+      backgroundColor: const Color(0xFFF8FEFE),
 
       // APPBAR
       appBar: AppBar(
-        backgroundColor: const Color(0xFFF3F6F8),
+        backgroundColor: const Color(0xFFF8FEFE),
         elevation: 0,
         centerTitle: true,
         leading: IconButton(
@@ -59,11 +61,11 @@ class _EditProfilePageState extends State<EditProfilePage> {
                children: [
 
               Container(
-                width: 220,
-                height: 160,
+                width: 298,
+                height: 157,
                 decoration: BoxDecoration(
-                  color: const Color(0xFFDCEAF2),
-                  borderRadius: BorderRadius.circular(120),
+                  color: const Color(0xFFECF9FF),
+                  borderRadius: BorderRadius.circular(200),
                 ),
               ),
 
@@ -91,6 +93,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
             const SizedBox(height: 8),
 
             ProfileTextField(
+              controller: nameController,
               hint: "Nama",
               icon: Icons.person_outline,
               suffixIcon: editIcon(),
@@ -112,6 +115,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
             const SizedBox(height: 8),
 
             ProfileTextField(
+              controller: emailController,
               hint: "Email",
               icon: Icons.email_outlined,
               suffixIcon: editIcon(),
@@ -134,6 +138,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
 
             GestureDetector(
               onTap:() async {
+
                 final date = await showCalendarPicker(context);
 
                 if(date != null){
@@ -178,7 +183,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
 
             /// BUTTON SAVE
             SizedBox(
-              height: 56,
+              height: 66,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFFFFA726),
@@ -191,16 +196,29 @@ class _EditProfilePageState extends State<EditProfilePage> {
                     ),
                   ),
                 ),
-                onPressed: () {
-                  showSuccessProfileModal(context);
-                },
+                onPressed: () async {
+                
+                await ref.read(profileProvider.notifier).update(
+                  
+                name: nameController.text,
+                email: emailController.text,
+                birth: birthController.text,
+                gender: genderController.text,
+
+              );
+
+                showDialog(
+                  context: context,
+                  builder: (context) => const ModalSuccessProfile(),
+                );
+              },
 
                 child: const Text(
                   "Simpan",
                   style: TextStyle(
                     fontFamily: "NunitoSans",
                     fontWeight: FontWeight.w700,
-                    fontSize: 16,
+                    fontSize: 24,
                     color: Colors.white,
                   ),
                 ),

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'splashscreen2.dart';
-
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+import 'features/profile/pages/profile_page.dart';
+import 'features/profile/pages/home_page.dart';
 // void main() {
 //   runApp(const MyApp());
 // }
@@ -17,10 +20,22 @@ import 'splashscreen2.dart';
 //   }
 // }
 
-import 'belajar.dart';
+// import 'belajar.dart';
 
-void main() {
-  runApp(const MyApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Supabase.initialize(
+    url: 'https://iytavcacxclvgvkbdxle.supabase.co',
+    anonKey: 'sb_publishable_Btp9diyEEfAMicnJt7gf3g_gckPnlYR',
+  );
+
+  runApp(
+    const ProviderScope(
+      child: MyApp(),
+    ),
+  );
+
 }
 
 class MyApp extends StatelessWidget {
@@ -28,84 +43,27 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false, home: Belajar());
+
+    // return MaterialApp(debugShowCheckedModeBanner: false, home: Belajar());
+
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      
+       theme: ThemeData(
+        fontFamily: "NunitoSans",
+        scaffoldBackgroundColor: const Color(0xFFF8FEFE),
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Color(0xFFF8FEFE),
+          elevation: 0,
+          iconTheme: IconThemeData(color: Color(0xFF101010)),
+        ),
+      ),
+
+
+        home: const HomePage(
+          name: "user",
+        ),
+    );
+
   }
 }
-
-// void main() {
-//   runApp(const MyApp());
-// }
-
-// class MyApp extends StatelessWidget {
-//   const MyApp({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       title: 'Flutter Demo',
-//       theme: ThemeData(colorScheme: .fromSeed(seedColor: Colors.deepPurple)),
-//       home: const MyHomePage(title: 'Raion Internship'),
-//     );
-//   }
-// }
-
-// class MyHomePage extends StatefulWidget {
-//   const MyHomePage({super.key, required this.title});
-
-//   final String title;
-
-//   @override
-//   State<MyHomePage> createState() => _MyHomePageState();
-// }
-
-// class _MyHomePageState extends State<MyHomePage> {
-//   int _counter = 0;
-
-//   void _incrementCounter() {
-//     setState(() {
-//       _counter++;
-//     });
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(backgroundColor: Colors.blue, title: Text(widget.title)),
-//       body: Padding(
-//         padding: const EdgeInsets.all(20.0),
-
-//         child: Column(
-//           children: [
-//             TextField(
-//               decoration: InputDecoration(
-//                 label: Text('Email'),
-//                 border: OutlineInputBorder(),
-//               ),
-//             ),
-
-//             Text('Login Page'),
-//             TextField(
-//               decoration: InputDecoration(
-//                 label: Text('Password'),
-//                 border: OutlineInputBorder(),
-//               ),
-//             ),
-//             TextField(
-//               decoration: InputDecoration(
-//                 label: Text('Name'),
-//                 border: OutlineInputBorder(),
-//               ),
-//             ),
-//             ElevatedButton(onPressed: () {}, child: Text('Login')),
-//           ],
-//         ),
-//       ),
-
-//       floatingActionButton: FloatingActionButton(
-//         onPressed: _incrementCounter,
-//         tooltip: 'Increment',
-//         child: const Icon(Icons.add),
-//       ),
-//     );
-//   }
-// }
