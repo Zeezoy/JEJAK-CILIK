@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:jejak_cilik/album.dart';
+import 'package:jejak_cilik/tracker.dart';
 
 // void main() {
 //   runApp(const MyApp());
@@ -37,6 +39,34 @@ class _SubModulState extends State<SubModul> {
         setState(() {
           selectedIndex = index;
         });
+
+        switch (index) {
+          // case 0:
+          //   Navigator.push(
+          //     context,
+          //     MaterialPageRoute(builder: (_) => const HomePage()),
+          //   );
+          //   break;
+          case 1:
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => const SubModul()),
+            );
+            break;
+          case 2:
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => const Tracker()),
+            );
+            break;
+          case 0:
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => const Album()),
+            );
+            break;
+        }
+        ;
       },
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 300),

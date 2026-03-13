@@ -207,108 +207,107 @@ class _Recall2State extends State<Recall2> with SingleTickerProviderStateMixin {
       backgroundColor: Color.fromRGBO(126, 214, 255, 1),
       body: Stack(
         children: [
-          Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                /// KARTU
-                Center(
-                  child: AnimatedBuilder(
-                    animation: controller,
-                    builder: (context, child) {
-                      final angle = controller.value * pi;
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              /// KARTU
+              Center(
+                child: AnimatedBuilder(
+                  animation: controller,
+                  builder: (context, child) {
+                    final angle = controller.value * pi;
 
-                      return Transform(
-                        alignment: Alignment.center,
-                        transform: Matrix4.rotationY(angle),
-                        child: angle <= pi / 2
-                            ? Image.asset(
-                                "assets/misi/card2front.png",
+                    return Transform(
+                      alignment: Alignment.center,
+                      transform: Matrix4.rotationY(angle),
+                      child: angle <= pi / 2
+                          ? Image.asset(
+                              "assets/misi/card2front.png",
+                              width: 374,
+                            )
+                          : Transform(
+                              alignment: Alignment.center,
+                              transform: Matrix4.rotationY(pi),
+                              child: Image.asset(
+                                "assets/misi/card2back.png",
                                 width: 374,
-                              )
-                            : Transform(
-                                alignment: Alignment.center,
-                                transform: Matrix4.rotationY(pi),
-                                child: Image.asset(
-                                  "assets/misi/card2back.png",
-                                  width: 374,
-                                ),
                               ),
-                      );
-                    },
+                            ),
+                    );
+                  },
+                ),
+              ),
+
+              const SizedBox(height: 40),
+
+              /// TOMBOL FLIP
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  SizedBox(
+                    width: 324,
+                    height: 39,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        flipCard();
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Color.fromARGB(249, 255, 167, 38),
+                        side: BorderSide(
+                          color: Color.fromARGB(249, 255, 167, 38),
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(100),
+                        ),
+                      ),
+                      child: const Icon(
+                        Icons.repeat,
+                        color: Colors.white,
+                        size: 30,
+                      ),
+                    ),
                   ),
-                ),
+                ],
+              ),
 
-                const SizedBox(height: 40),
-
-                /// TOMBOL FLIP
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    SizedBox(
-                      width: 324,
-                      height: 39,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          flipCard();
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Color.fromARGB(249, 255, 167, 38),
-                          side: BorderSide(
-                            color: Color.fromARGB(249, 255, 167, 38),
-                          ),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(100),
-                          ),
+              SizedBox(height: 11),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  SizedBox(
+                    width: 324,
+                    height: 39,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        flipCard();
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Color.fromARGB(249, 255, 167, 38),
+                        side: BorderSide(
+                          color: Color.fromARGB(249, 255, 167, 38),
                         ),
-                        child: const Icon(
-                          Icons.repeat,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(100),
+                        ),
+                      ),
+                      child: Text(
+                        "Selesai",
+                        style: TextStyle(
+                          fontFamily: 'NunitoSans',
+                          fontSize: 16,
+                          fontWeight: FontWeight.w800,
                           color: Colors.white,
-                          size: 30,
                         ),
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
+              ),
 
-                SizedBox(height: 11),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    SizedBox(
-                      width: 324,
-                      height: 39,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          flipCard();
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Color.fromARGB(249, 255, 167, 38),
-                          side: BorderSide(
-                            color: Color.fromARGB(249, 255, 167, 38),
-                          ),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(100),
-                          ),
-                        ),
-                        child: Text(
-                          "Selesai",
-                          style: TextStyle(
-                            fontFamily: 'NunitoSans',
-                            fontSize: 16,
-                            fontWeight: FontWeight.w800,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-
-                SizedBox(height: 50),
-              ],
-            ),
+              SizedBox(height: 50),
+            ],
           ),
+
           Positioned(
             top: 40,
             left: 20,

@@ -12,7 +12,7 @@ class Login2 extends StatefulWidget {
 
 class _Login2State extends State<Login2> {
   bool _obscure = true;
-  bool _loginError = false;
+  final bool _loginError = false;
 
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
