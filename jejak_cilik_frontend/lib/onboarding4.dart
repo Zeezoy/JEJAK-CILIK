@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'login2.dart';
+import 'features/auth/login2.dart';
 
 class Onboarding4 extends StatefulWidget {
   const Onboarding4({super.key});

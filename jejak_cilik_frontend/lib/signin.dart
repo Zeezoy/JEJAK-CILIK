@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'login2.dart';
+import 'features/auth/login2.dart';
 import 'onboarding4.dart';
 import 'signin2.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -22,29 +22,35 @@ class _SigninState extends State<Signin> {
 
   @override
   void initState() {
-  super.initState();
+    super.initState();
 
-  Supabase.instance.client.auth.onAuthStateChange.listen((data) {
+    _emailController.addListener(() => setState(() {}));
+    _passwordController.addListener(() => setState(() {}));
+    _passController.addListener(() => setState(() {}));
+  }
 
-    final session = data.session;
+  Future<void> register() async {
+    final email = _emailController.text.trim();
+    final password = _passwordController.text.trim();
 
-    if (session != null) {
-
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (context) => const Login2(),
-        ),
+    try {
+      final res = await Supabase.instance.client.auth.signUp(
+        email: email,
+        password: password,
       );
 
+      if (res.user != null) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const Signin2(),
+          ),
+        );
+      }
+    } catch (e) {
+      print("REGISTER ERROR: $e");
     }
-
-  });
-
-  _emailController.addListener(() => setState(() {}));
-  _passwordController.addListener(() => setState(() {}));
-  _passController.addListener(() => setState(() {}));
-}
+  }
 
   @override
   void dispose() {
@@ -55,7 +61,7 @@ class _SigninState extends State<Signin> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) { {
     return Scaffold(
       backgroundColor: const Color(0xFF7FD4FF),
       body: SafeArea(
@@ -399,14 +405,8 @@ class _SigninState extends State<Signin> {
                                 borderRadius: BorderRadius.circular(20),
                               ),
                             ),
-                            onPressed: () {
-                              Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const Signin2(),
-                                ),
-                              );
-                            },
+                            onPressed: register,
+
                             child: const Text(
                               "Masuk",
                               style: TextStyle(
@@ -462,18 +462,19 @@ class _SigninState extends State<Signin> {
                             child: Image.asset(
                               'assets/image_20.png',
                               width: 56,
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                    ],
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
-      ),
-    );
+      );
+    }
   }
-}
+  }

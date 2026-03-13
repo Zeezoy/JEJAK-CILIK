@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'signin5.dart';
+import 'core/temp_child_data.dart';
 
 class Signin4 extends StatefulWidget {
   const Signin4({super.key});
@@ -145,6 +146,10 @@ class _Signin4State extends State<Signin4> {
                       ),
                     ),
                     onPressed: () {
+
+                      TempChildData.birthDate =
+                          "$selectedYear-$selectedMonth-$selectedDay";
+
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
@@ -152,6 +157,7 @@ class _Signin4State extends State<Signin4> {
                         ),
                       );
                     },
+
                     child: const Text(
                       "Selanjutnya",
                       style: TextStyle(

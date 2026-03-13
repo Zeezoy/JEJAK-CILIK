@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
-import 'signin.dart';
-import 'onboarding4.dart';
-import 'submodul.dart';
+import '../../signin.dart';
+import '../../onboarding4.dart';
+import '../../submodul.dart';
+import '../../core/services/auth_service.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../bloc/auth/auth_bloc.dart';
+import '../../bloc/auth/auth_event.dart';
+import '../../bloc/auth/auth_state.dart';
 
 class Login2 extends StatefulWidget {
   const Login2({super.key});
@@ -16,6 +21,7 @@ class _Login2State extends State<Login2> {
 
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final AuthService authService = AuthService();
 
   @override
   void initState() {
@@ -31,9 +37,47 @@ class _Login2State extends State<Login2> {
     super.dispose();
   }
 
+  Future<void> login() async {
+    try {
+      final res = await authService.login(
+        email: _emailController.text.trim(),
+        password: _passwordController.text.trim(),
+      );
+
+      if(res.user != null){
+        
+        if(!mounted) return;
+
+        Navigator.pushReplacement(
+          context, 
+          MaterialPageRoute(
+            builder: (context) => const SubModul(),
+          ),
+        );
+      }
+    } catch (e) {
+      setState((){
+        _loginError = true;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return BlocListener<AuthBloc, AuthBlocState>(
+       listener: (context, state) {
+
+      if (state.authenticated) {
+
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (_) => const SubModul(),
+          ),
+        );
+      }
+    },
+    child: Scaffold(
       backgroundColor: const Color(0xFF7FD4FF),
       body: SafeArea(
         child: Stack(
@@ -318,14 +362,16 @@ class _Login2State extends State<Login2> {
                                 borderRadius: BorderRadius.circular(20),
                               ),
                             ),
+
                             onPressed: () {
-                              Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const SubModul(),
+                              context.read<AuthBloc>().add(
+                                LoginWithEmail(
+                                  _emailController.text.trim(),
+                                  _passwordController.text.trim(),
                                 ),
                               );
                             },
+
                             child: const Text(
                               "Masuk",
                               style: TextStyle(
@@ -372,8 +418,9 @@ class _Login2State extends State<Login2> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           GestureDetector(
-                            onTap: () {
-                              debugPrint("Google diklik");
+                            onTap: () async {
+                              
+                             context.read<AuthBloc>().add(LoginWithGoogle());
                             },
                             child: Image.asset(
                               'assets/image_20.png',
@@ -390,6 +437,8 @@ class _Login2State extends State<Login2> {
           ],
         ),
       ),
+    ),
+
     );
   }
 }

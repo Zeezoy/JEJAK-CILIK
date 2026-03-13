@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'signin4.dart';
+import 'core/temp_child_data.dart';
 
 class Signin3 extends StatefulWidget {
   const Signin3({super.key});
@@ -181,13 +182,16 @@ class _Signin3State extends State<Signin3> {
                       ),
                     ),
                     onPressed: () {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const Signin4(),
-                        ),
-                      );
-                    },
+
+                    TempChildData.name = _namaController.text;
+
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const Signin4(),
+                      ),
+                    );
+                  },
                     child: const Text(
                       "Selanjutnya",
                       style: TextStyle(

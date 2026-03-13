@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'onboarding.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+import 'features/auth/login2.dart';
+import 'submodul.dart';
 
 class SplashScreen2 extends StatefulWidget {
   const SplashScreen2({super.key});
@@ -19,7 +22,7 @@ class _SplashScreen2State extends State<SplashScreen2>
   final List<double> rightPositions = [20, 140];
   final List<double> leftPositions = [5, 80, 220];
 
-  @override
+    @override
   void initState() {
     super.initState();
 
@@ -28,8 +31,44 @@ class _SplashScreen2State extends State<SplashScreen2>
       duration: const Duration(milliseconds: 800),
     );
 
-    _playSequence();
+    startApp();
   }
+
+  Future<void> startApp() async {
+
+    _playSequence();
+
+    await Future.delayed(const Duration(seconds: 2));
+
+    checkSession();
+
+  }
+
+  void checkSession() {
+
+  final session = Supabase.instance.client.auth.currentSession;
+
+  if (session != null) {
+
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const SubModul(),
+      ),
+    );
+
+  } else {
+
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const Login2(),
+      ),
+    );
+
+  }
+
+}
 
   Future<void> _playSequence() async {
     final delays = [
@@ -50,10 +89,7 @@ class _SplashScreen2State extends State<SplashScreen2>
 
     if (!mounted) return;
 
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (context) => const Onboarding()),
-    );
+    checkSession();
   }
 
   // Future<void> _playSequence() async {
