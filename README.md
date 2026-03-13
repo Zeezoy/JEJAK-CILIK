@@ -1,4 +1,8 @@
 # 🐧 **JEJAK CILIK**
+<p align="center">
+  <img src="jejakcilik1.png" width="300">
+</p>
+
 Jejak cilik is an educational mobile app based on SDGs 4 and SDGs 16. Targeting users aged 7 to 12, the app helps them learn through interactive learning modules, track their progress, and earn certificates upon completion.
 
 The app was developed using Flutter with a Supabase backend.
@@ -37,7 +41,9 @@ Jejak Cilik app uses a Mobile Frontend and Backend-as-a-Service (Baas) architect
 ---
 # 🏗️ **APPS ARCHITECTURE**
 
-![arsitektur](arsitektur.jpeg)
+<p align="center">
+  <img src="arsitektur.jpeg" width="300">
+</p>
 
 ---
 
