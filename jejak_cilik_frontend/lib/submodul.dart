@@ -2,21 +2,8 @@ import 'package:flutter/material.dart';
 import 'album.dart';
 import 'tracker.dart';
 import 'belajar.dart';
-// void main() {
-//   runApp(const MyApp());
-// }
-
-// class MyApp extends StatelessWidget {
-//   const MyApp({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return const MaterialApp(
-//       debugShowCheckedModeBanner: false,
-//       home: SubModul(),
-//     );
-//   }
-// }
+import 'features/profile/pages/profile_page.dart';
+import 'features/profile/pages/home_page.dart';
 
 class SubModul extends StatefulWidget {
   const SubModul({super.key});
@@ -41,33 +28,55 @@ class _SubModulState extends State<SubModul> {
         });
 
         switch (index) {
-          // case 0:
-          //   Navigator.push(
-          //     context,
-          //     MaterialPageRoute(builder: (_) => const HomePage()),
-          //   );
-          //   break;
-          case 1:
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (_) => const SubModul()),
-            );
-            break;
-          case 2:
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (_) => const Tracker()),
-            );
-            break;
-          case 0:
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (_) => const Album()),
-            );
-            break;
-        }
-        ;
-      },
+
+  case 0:
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (_) => const HomePage(name: "User"),
+      ),
+    );
+    break;
+
+  case 1:
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (_) => const SubModul(),
+      ),
+    );
+    break;
+
+  case 2:
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (_) => const Tracker(),
+      ),
+    );
+    break;
+
+  case 3:
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (_) => const Album(),
+      ),
+    );
+    break;
+
+  case 4:
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+          builder: (_) => const ProfilePage(),
+        ),
+      );
+      break;
+    }
+
+  ;
+        },
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 300),
         padding: EdgeInsets.symmetric(
