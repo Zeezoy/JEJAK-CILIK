@@ -1,6 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:jejak_cilik/kuis2.dart';
+import 'kuis2.dart';
 
 class Recall extends StatefulWidget {
   const Recall({super.key});

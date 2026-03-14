@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jejak_cilik/qris.dart';
+import 'qris.dart';
 
 class Pembayaran extends StatefulWidget {
   const Pembayaran({super.key});

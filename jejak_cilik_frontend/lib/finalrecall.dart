@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jejak_cilik/kuis2.dart';
+import 'kuis2.dart';
 
 class FinalRecall extends StatefulWidget {
   const FinalRecall({super.key});

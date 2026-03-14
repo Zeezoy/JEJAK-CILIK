@@ -24,6 +24,7 @@ class _SplashScreen2State extends State<SplashScreen2>
 
     @override
   void initState() {
+    
     super.initState();
 
     _controller = AnimationController(

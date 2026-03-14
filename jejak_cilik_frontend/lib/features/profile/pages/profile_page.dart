@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../provider/profile_provider.dart';
 import 'certificate_page.dart';
+import 'home_page.dart';
 
 class ProfilePage extends ConsumerWidget {
   const ProfilePage({super.key});
@@ -235,6 +236,55 @@ class ProfilePage extends ConsumerWidget {
               ),
             )
           ],
+
+          children: [
+      GestureDetector(
+        onTap: (){
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (_) => const HomePage(name: "User"),
+            ),
+          );
+        },
+    child: const Icon(Icons.home_outlined, color: Color(0xFF959898)),
+  ),
+
+  GestureDetector(
+    onTap: (){
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (_) => const SubmodulePage(
+            moduleId: 1,
+            title: "Modul",
+          ),
+        ),
+      );
+    },
+    child: const Icon(Icons.menu_book_outlined, color: Color(0xFF959898)),
+  ),
+
+  const Icon(Icons.map_outlined, color: Color(0xFF959898)),
+
+  GestureDetector(
+    onTap: (){
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (_) => const RewardPage(),
+        ),
+      );
+    },
+    child: const Icon(Icons.emoji_events_outlined, color: Color(0xFF959898)),
+  ),
+
+  const CircleAvatar(
+    backgroundColor: Color(0xFFFFA726),
+    child: Icon(Icons.person, color: Colors.white),
+  ),
+
+],
         ),
       ),
     );

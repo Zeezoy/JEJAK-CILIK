@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:fl_chart/fl_chart.dart';
-import 'package:jejak_cilik/album.dart';
-import 'package:jejak_cilik/submodul.dart';
+import 'package:flutter/fl_chart.dart';
+import 'album.dart';
+import 'submodul.dart';
 
 class Tracker extends StatefulWidget {
   const Tracker({super.key});

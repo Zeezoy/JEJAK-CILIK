@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../pembayaran.dart';
 
 class RewardPage extends StatelessWidget {
 
@@ -13,14 +14,37 @@ class RewardPage extends StatelessWidget {
         title: const Text("Reward"),
       ),
 
-      body: const Center(
-        child: Text(
-          "🎉 Kamu mendapatkan reward!",
-          style: TextStyle(
-            fontSize: 22,
-          ),
+      body: Center(
+  child: Column(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+
+      const Text(
+        "🎉 Kamu mendapatkan reward!",
+        style: TextStyle(
+          fontSize: 22,
         ),
       ),
+
+      const SizedBox(height: 20),
+
+      ElevatedButton(
+        onPressed: () {
+
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (_) => const Pembayaran(),
+            ),
+          );
+
+        },
+        child: const Text("Lanjut ke Pembayaran"),
+      ),
+
+    ],
+  ),
+),
     );
   }
 }

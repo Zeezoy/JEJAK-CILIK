@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:jejak_cilik/pembayaran.dart';
-import 'package:jejak_cilik/pembayaran2.dart';
+import 'pembayaran.dart';
+import 'pembayaran2.dart';
 
 class Qris extends StatefulWidget {
   const Qris({super.key});

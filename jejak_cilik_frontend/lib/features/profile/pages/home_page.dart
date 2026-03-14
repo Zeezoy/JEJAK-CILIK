@@ -7,6 +7,7 @@ import '../../../core/theme/app_colors.dart';
 import '../../../core/widgets/module_carousel.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../submodule/pages/submodul_page.dart';
+import 'profile_page.dart';
 
 class HomePage extends StatefulWidget {
 
@@ -49,32 +50,46 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
 
-      bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: AppColors.secondary,
-        unselectedItemColor: Colors.grey,
-        items: const [
+              bottomNavigationBar: BottomNavigationBar(
+          selectedItemColor: AppColors.secondary,
+          unselectedItemColor: Colors.grey,
 
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: "Home",
-          ),
+          onTap: (index) {
 
-          BottomNavigationBarItem(
-            icon: Icon(Icons.menu_book),
-            label: "Modul",
-          ),
+            if (index == 3) {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => const ProfilePage(),
+                ),
+              );
+            }
 
-          BottomNavigationBarItem(
-            icon: Icon(Icons.emoji_events),
-            label: "Reward",
-          ),
+          },
 
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: "Profile",
-          ),
-        ],
-      ),
+          items: const [
+
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: "Home",
+            ),
+
+            BottomNavigationBarItem(
+              icon: Icon(Icons.menu_book),
+              label: "Modul",
+            ),
+
+            BottomNavigationBarItem(
+              icon: Icon(Icons.emoji_events),
+              label: "Reward",
+            ),
+
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person),
+              label: "Profile",
+            ),
+          ],
+        ),
 
       body: Stack(
         children: [
@@ -238,7 +253,7 @@ class _HomePageState extends State<HomePage> {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (_) => SubmodulePage(
+                                        builder: (context) => SubmodulePage(
                                           moduleId: module["id"],
                                           title: module["title"],
                                         ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:jejak_cilik/album.dart';
-import 'package:jejak_cilik/tracker.dart';
-
+import 'album.dart';
+import 'tracker.dart';
+import 'belajar.dart';
 // void main() {
 //   runApp(const MyApp());
 // }

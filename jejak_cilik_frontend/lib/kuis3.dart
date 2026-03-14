@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:jejak_cilik/kuis2.dart';
-import 'package:jejak_cilik/minimission.dart';
+import 'kuis2.dart';
+import 'minimission.dart';
 
 class Kuis3 extends StatefulWidget {
   const Kuis3({super.key});

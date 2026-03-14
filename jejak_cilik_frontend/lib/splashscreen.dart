@@ -46,6 +46,10 @@ class _SplashScreenState extends State<SplashScreen>
     _bintangScale = Tween<double>(begin: 0.5, end: 1).animate(_controller);
 
     _controller.forward();
+
+    Future.delayed(const Duration(seconds: 3), () {
+      Navigator.pushReplacementNamed(context, "/signin");
+    });
   }
 
   @override

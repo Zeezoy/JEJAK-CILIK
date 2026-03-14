@@ -17,7 +17,7 @@ class Login2 extends StatefulWidget {
 
 class _Login2State extends State<Login2> {
   bool _obscure = true;
-  final bool _loginError = false;
+  bool _loginError = false;
 
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
@@ -37,30 +37,34 @@ class _Login2State extends State<Login2> {
     super.dispose();
   }
 
-  Future<void> login() async {
-    try {
-      final res = await authService.login(
-        email: _emailController.text.trim(),
-        password: _passwordController.text.trim(),
-      );
+ Future<void> login() async {
+  try {
+    final res = await authService.login(
+      email: _emailController.text.trim(),
+      password: _passwordController.text.trim(),
+    );
 
-      if(res.user != null){
-        
-        if(!mounted) return;
+    if (res.user != null) {
 
-        Navigator.pushReplacement(
-          context, 
-          MaterialPageRoute(
-            builder: (context) => const SubModul(),
-          ),
-        );
-      }
-    } catch (e) {
-      setState((){
-        _loginError = true;
+      if (!mounted) return;
+
+      setState(() {
+        _loginError = false;
       });
+
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const SubModul(),
+        ),
+      );
     }
+  } catch (e) {
+    setState(() {
+      _loginError = true;
+    });
   }
+}
 
   @override
   Widget build(BuildContext context) {

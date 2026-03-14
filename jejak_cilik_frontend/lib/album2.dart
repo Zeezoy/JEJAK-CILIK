@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jejak_cilik/album.dart';
+import 'album.dart';
 
 class Album2 extends StatefulWidget {
   const Album2({super.key});

@@ -204,6 +204,7 @@
 // }
 
 import 'package:flutter/material.dart';
+import 'belajar.dart';
 
 class MiniMission extends StatefulWidget {
   const MiniMission({super.key});
@@ -291,7 +292,16 @@ class _MiniMissionState extends State<MiniMission> {
               left: MediaQuery.of(context).size.width / 2 - 35,
               child: levelButton(
                 active: isActive(1),
-                onPressed: () => selesaiLevel(1),
+                onPressed: (){
+                selesaiLevel(1);
+
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const Belajar(),
+                  ),
+                );
+              },
               ),
             ),
 
@@ -301,7 +311,16 @@ class _MiniMissionState extends State<MiniMission> {
               right: 100,
               child: levelButton(
                 active: isActive(2),
-                onPressed: () => selesaiLevel(2),
+                onPressed: (){
+                  selesaiLevel(2);
+
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const Belajar2(),
+                    ),
+                  );
+                },
               ),
             ),
 
@@ -311,7 +330,16 @@ class _MiniMissionState extends State<MiniMission> {
               right: 60,
               child: levelButton(
                 active: isActive(3),
-                onPressed: () => selesaiLevel(3),
+                onPressed: (){
+                  selesaiLevel(3);
+
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const Belajar3(),
+                    ),
+                  );
+                },
               ),
             ),
 
@@ -321,7 +349,16 @@ class _MiniMissionState extends State<MiniMission> {
               right: 100,
               child: recallButton(
                 active: isActive(4),
-                onPressed: () => selesaiLevel(4),
+               onPressed: (){
+                selesaiLevel(4);
+
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const Belajar4(),
+                  ),
+                );
+              },
               ),
             ),
 

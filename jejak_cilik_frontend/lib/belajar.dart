@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jejak_cilik/submodul.dart';
+import 'submodul.dart';
 
 class Belajar extends StatelessWidget {
   const Belajar({super.key});
